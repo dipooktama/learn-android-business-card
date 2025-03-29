@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,10 +16,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -91,6 +94,10 @@ fun HeaderInfo(modifier: Modifier) {
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Image(
+            painter = painterResource(R.drawable.fionychimmie2_removebg_preview),
+            contentDescription = "profile picture"
+        )
         Text(
             text = stringResource(R.string.name),
             fontSize = 48.sp,
@@ -108,15 +115,24 @@ fun HeaderInfo(modifier: Modifier) {
 
 @Composable
 fun PageLayout() {
-    Box(
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxSize()
+    Surface(
+        color = Color.hsl(
+            hue = 0.21f,
+            saturation = 1f,
+            lightness = 0.8f,
+            alpha = 0.34f
+        )
     ) {
-        HeaderInfo(Modifier
-            .fillMaxWidth()
-            .align(Alignment.Center))
-        InfoList(Modifier.align(Alignment.BottomCenter))
+        Box(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxSize()
+        ) {
+            HeaderInfo(Modifier
+                .fillMaxWidth()
+                .align(Alignment.Center))
+            InfoList(Modifier.align(Alignment.BottomCenter))
+        }
     }
 }
 
